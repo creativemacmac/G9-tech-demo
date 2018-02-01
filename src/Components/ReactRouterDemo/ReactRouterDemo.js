@@ -10,6 +10,7 @@ import './__styles__/index.css';
 // Components
 import Demo1 from './subComponents/Demo1';
 import Demo2 from './subComponents/Demo2';
+import Page404 from '../Page404';
 
 type State = {
     activeItem: string
@@ -57,6 +58,7 @@ class ReactRouterDemo extends React.Component<{}, State> {
                 <Switch>
                     <Route path='/reactRouter/demo1' component={Demo1} />
                     <Route path='/reactRouter/demo2/:id' component={Demo2} />
+                    <Route component={Page404} />
                 </Switch>
 
             </div>

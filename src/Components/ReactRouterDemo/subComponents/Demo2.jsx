@@ -10,7 +10,7 @@ import { Header, List } from 'semantic-ui-react';
 const Demo2 = ( props: any ) => {
 
 const skater = Demo2API.skaters[parseInt(props.match.params.id, 10)];
-const videoId = `https://www.youtube.com/embed/${skater.videoId}`;
+const videoId = skater ? `https://www.youtube.com/embed/${skater.videoId}` : '';
 
 
   return (
@@ -25,8 +25,11 @@ const videoId = `https://www.youtube.com/embed/${skater.videoId}`;
             </List>
         ))
       }
-      <h1 className='jawn'>{skater.name}</h1>
-      <iframe width="560" height="315" src={videoId} frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      {/* {skater && */}
+
+        <h1 className='jawn'>{skater.name}</h1>
+        <iframe width="560" height="315" src={videoId} frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      {/* } */}
     </div>
   )
 }
