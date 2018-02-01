@@ -1,11 +1,11 @@
 // @flow
 
 import React, { Component } from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Route, Link, Switch, Redirect } from 'react-router-dom';
 
 // Styles
 import './__styles__/App.css';
-import { Menu, Segment } from 'semantic-ui-react';
+import { Menu } from 'semantic-ui-react';
 
 // Components
 import AlgoliaDemo from '../AlgoliaDemo';
@@ -13,6 +13,7 @@ import ReduxDemo from '../ReduxDemo';
 import SemanticDemo from '../SemanticDemo';
 import SemanticThemeDemo from '../SemanticThemeDemo';
 import ReactRouterDemo from '../ReactRouterDemo';
+import Page404 from '../Page404';
 
 type State = {
   activeItem: string
@@ -37,7 +38,7 @@ class App extends Component<{}, State> {
           </header>
 
           <Menu pointing secondary>
-            <Menu.Item as={Link} to='/' name='React Router' active={activeItem === 'React Router'} onClick={this.handleItemClick} />
+            <Menu.Item as={Link} to='/reactRouter' name='React Router' active={activeItem === 'React Router'} onClick={this.handleItemClick} />
             <Menu.Item as={Link} to='/semanticUiBasic' name='Semantic UI - Basic' active={activeItem === 'Semantic UI - Basic'} onClick={this.handleItemClick} />
             <Menu.Item as={Link} to='/semanticUiTheme' name='Semantic UI - Theme' active={activeItem === 'Semantic UI - Theme'} onClick={this.handleItemClick} />
             <Menu.Item as={Link} to='/algolia' name='Algolia' active={activeItem === 'Algolia'} onClick={this.handleItemClick} />
@@ -45,11 +46,17 @@ class App extends Component<{}, State> {
           </Menu>
         </div>
 
-        <Route exact path='/' component={ReactRouterDemo} />
-        <Route path='/semanticUiBasic' component={SemanticDemo} />
-        <Route path='/semanticUiTheme' component={SemanticThemeDemo} />
-        <Route path='/algolia' component={AlgoliaDemo} />
-        <Route path='/redux' component={ReduxDemo} />
+        {/* We must add Switch component here so that the route renders immediately at th first match. without it, page 404 component will always render with all of
+        the otehr components as well */}
+        <Switch>
+          <Route exact path='/' render={() =>  <Redirect to='/reactRouter' /> } />
+          <Route path='/reactRouter' component={ReactRouterDemo} />
+          <Route path='/semanticUiBasic' component={SemanticDemo} />
+          <Route path='/semanticUiTheme' component={SemanticThemeDemo} />
+          <Route path='/algolia' component={AlgoliaDemo} />
+          <Route path='/redux' component={ReduxDemo} />
+          <Route component={Page404} />
+        </Switch>
 
       </div>
     );
