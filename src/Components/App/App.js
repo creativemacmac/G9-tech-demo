@@ -5,7 +5,7 @@ import { Route, Link } from 'react-router-dom';
 
 // Styles
 import './__styles__/App.css';
-import { Menu, Segment } from 'semantic-ui-react';
+import { Menu } from 'semantic-ui-react';
 
 // Components
 import AlgoliaDemo from '../AlgoliaDemo';
