@@ -38,7 +38,7 @@ class App extends Component<{}, State> {
           </header>
 
           <Menu pointing secondary>
-            <Menu.Item as={Link} to='/reactRouter' name='React Router' active={activeItem === 'React Router'} onClick={this.handleItemClick} />
+            <Menu.Item as={Link} to='/reactRouter/demo1' name='React Router' active={activeItem === 'React Router'} onClick={this.handleItemClick} />
             <Menu.Item as={Link} to='/semanticUiBasic' name='Semantic UI - Basic' active={activeItem === 'Semantic UI - Basic'} onClick={this.handleItemClick} />
             <Menu.Item as={Link} to='/semanticUiTheme' name='Semantic UI - Theme' active={activeItem === 'Semantic UI - Theme'} onClick={this.handleItemClick} />
             <Menu.Item as={Link} to='/algolia' name='Algolia' active={activeItem === 'Algolia'} onClick={this.handleItemClick} />
@@ -49,7 +49,7 @@ class App extends Component<{}, State> {
         {/* We must add Switch component here so that the route renders immediately at th first match. without it, page 404 component will always render with all of
         the otehr components as well */}
         <Switch>
-          <Route exact path='/' render={() =>  <Redirect to='/reactRouter' /> } />
+          <Route exact path='/' render={() =>  <Redirect to='/reactRouter/demo1' /> } />
           <Route path='/reactRouter' component={ReactRouterDemo} />
           <Route path='/semanticUiBasic' component={SemanticDemo} />
           <Route path='/semanticUiTheme' component={SemanticThemeDemo} />
