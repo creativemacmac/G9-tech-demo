@@ -56,8 +56,8 @@ class ReactRouterDemo extends React.Component<{}, State> {
                 </Menu>
 
                 <Switch>
-                    <Route path='/reactRouter/demo1' component={Demo1} />
-                    <Route path='/reactRouter/demo2/:id' component={Demo2} />
+                    <Route path={`${this.props.match.path}/demo1`} component={Demo1} />
+                    <Route path={`${this.props.match.path}/demo2/:id`} component={Demo2} />
                     <Route component={Page404} />
                 </Switch>
 

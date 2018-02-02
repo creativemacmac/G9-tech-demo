@@ -12,7 +12,6 @@ const Demo2 = ( props: any ) => {
 const skater = Demo2API.skaters[parseInt(props.match.params.id, 10)];
 const videoId = skater ? `https://www.youtube.com/embed/${skater.videoId}` : '';
 
-
   return (
     <div>
       <Header as='h2' content='Greatest Skate video of all time with the best team (minus one or two)' />
