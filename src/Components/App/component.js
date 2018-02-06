@@ -1,11 +1,13 @@
 // @flow
-
+/* eslint-disable */
 import React, { Component } from 'react';
-import { Route, Link, Switch, Redirect } from 'react-router-dom';
+import { Route, Link, Switch, Redirect} from 'react-router-dom';
+import { GoogleLogin, GoogleLogout} from 'react-google-login';
+import axios from 'axios';
 
 // Styles
 import './__styles__/App.css';
-import { Menu } from 'semantic-ui-react';
+import { Menu, Button } from 'semantic-ui-react';
 
 // Components
 import AlgoliaDemo from '../AlgoliaDemo';
@@ -19,10 +21,27 @@ type State = {
   activeItem: string
 }
 
-class App extends Component<{}, State> {
+type Props = {
+  loggedIn?: bool
+}
+
+class App extends Component<Props, State> {
 
   state = {
     activeItem: 'React Router'
+  }
+
+  responseGoogle = (response: any) => {
+    if (response) {
+      axios.get(`https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=${response.tokenObj.id_token}`)
+        .then((res) => {
+          this.props.authenticateUser(true);
+        })
+    }
+  }
+
+  logout = () => {
+    this.props.authenticateUser(false);
   }
 
   handleItemClick = (e: any, { name }: any) => this.setState({activeItem: name});
@@ -30,6 +49,8 @@ class App extends Component<{}, State> {
   render() {
 
     const {activeItem} = this.state;
+    const { loggedIn } = this.props;
+
     return (
       <div className="App">
         <div>
@@ -43,11 +64,32 @@ class App extends Component<{}, State> {
             <Menu.Item as={Link} to='/semanticUiTheme' name='Semantic UI - Theme' active={activeItem === 'Semantic UI - Theme'} onClick={this.handleItemClick} />
             <Menu.Item as={Link} to='/algolia' name='Algolia' active={activeItem === 'Algolia'} onClick={this.handleItemClick} />
             <Menu.Item as={Link} to='/redux' name='Redux' active={activeItem === 'Redux'} onClick={this.handleItemClick} />
+            <Menu.Item position='right'>
+              { !loggedIn ? (
+                  <Button
+                    as={GoogleLogin}
+                    color='blue'
+                    position='right'
+                    clientId="90007972842-0iln7e5l5n21pt6320cajebtq3pustd7.apps.googleusercontent.com"
+                    content='Login'
+                    onSuccess={this.responseGoogle}
+                  />
+                ) : (
+                  <Button
+                    as={GoogleLogout}
+                    color='red'
+                    position='right'
+                    content='Logout'
+                    onLogoutSuccess={this.logout}
+                  />
+                )
+              }
+              </Menu.Item>
           </Menu>
         </div>
 
         {/* We must add Switch component here so that the route renders immediately at th first match. without it, page 404 component will always render with all of
-        the otehr components as well */}
+        the other components as well */}
         <Switch>
           <Route exact path='/' render={() =>  <Redirect to='/reactRouter/demo1' /> } />
           <Route path='/reactRouter' component={ReactRouterDemo} />
@@ -62,5 +104,6 @@ class App extends Component<{}, State> {
     );
   }
 }
+
 
 export default App;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Link, Switch } from 'react-router-dom';
+import { Route, Link, Switch} from 'react-router-dom';
 import { Header, Button } from 'semantic-ui-react';
 
 // Components
@@ -7,7 +7,15 @@ import Posts from './subComponents/posts';
 import PostNew from './subComponents/postNew';
 import PostContent from './subComponents/postContent';
 
-const ReduxDemo = ({match}) => {
+const ReduxDemo = ({match, loggedIn}) => {
+    if(!loggedIn) {
+        return (
+            <div>
+                <Header as='h2' content='Please login above first' />
+            </div>
+        )
+    }
+
     return (
         <div>
             <Header as='h2' content='Demo using Redux' dividing />
@@ -29,4 +37,5 @@ const ReduxDemo = ({match}) => {
     )
 
 }
+
 export default ReduxDemo;

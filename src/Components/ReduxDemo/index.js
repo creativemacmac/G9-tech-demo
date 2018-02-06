@@ -1,3 +1,3 @@
-import ReduxDemo from './ReduxDemo';
+import ReduxDemo from './connect';
 
 export default ReduxDemo;

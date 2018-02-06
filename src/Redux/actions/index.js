@@ -4,11 +4,18 @@ export const FETCH_POSTS = 'FETCH_POSTS';
 export const CREATE_POST = 'CREATE_POST';
 export const FETCH_SINGLE_POST = 'FETCH_SINGLE_POST';
 export const DELETE_POST = 'DELETE_POST';
+export const AUTH_USER = 'AUTH_USER;'
 
 
 const ROOT_URL = 'http://reduxblog.herokuapp.com/api';
 const API_KEY = '?key=jawn';
 
+export const authenticateUser = (loggedIn = false) => {
+    return {
+        type: AUTH_USER,
+        payload: loggedIn
+    }
+}
 export const fetchPosts = () => {
     const request = axios.get(`${ROOT_URL}/posts${API_KEY}`);
 
