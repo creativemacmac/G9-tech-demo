@@ -27,7 +27,7 @@ const videoId = skater ? `https://www.youtube.com/embed/${skater.videoId}` : '';
       {/* {skater && */}
 
         <h1 className='jawn'>{skater.name}</h1>
-        <iframe width="560" height="315" src={videoId} frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <iframe width="560" height="315" src={videoId} allow="encrypted-media"></iframe>
       {/* } */}
     </div>
   )
