@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { fetchSinglePost, deletePost } from '../../../Redux/actions';
 import { Button } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
 
 class PostContent extends React.Component {
     componentDidMount() {

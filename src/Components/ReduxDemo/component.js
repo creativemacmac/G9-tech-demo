@@ -8,7 +8,11 @@ import PostNew from './subComponents/postNew';
 import PostContent from './subComponents/postContent';
 
 const ReduxDemo = ({match, loggedIn}) => {
-    if(!loggedIn) {
+
+    // check that state if logged in has been triggered.
+    const renderLoginButton = typeof loggedIn  === 'boolean' ? loggedIn : false;
+
+    if(!renderLoginButton) {
         return (
             <div>
                 <Header as='h2' content='Please login above first' />

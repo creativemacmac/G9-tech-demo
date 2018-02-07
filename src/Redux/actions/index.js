@@ -29,7 +29,7 @@ export const createPost = (values, cb) => {
     const request = axios.post(`${ROOT_URL}/posts${API_KEY}`, values)
     .then(() => cb())
     .catch(() => {
-        console.warn('There hsa been an error submiting the form')
+        console.warn('There hsa been an error submitting the form')
     })
 
     return {
@@ -48,7 +48,7 @@ export const fetchSinglePost = (id) => {
 }
 
 export const deletePost = (id, cb) => {
-    const request = axios.delete(`${ROOT_URL}/posts/${id}${API_KEY}`)
+    axios.delete(`${ROOT_URL}/posts/${id}${API_KEY}`)
         .then(() => cb());
 
     return {

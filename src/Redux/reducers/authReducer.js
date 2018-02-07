@@ -5,6 +5,6 @@ export default function(state = {}, action) {
        case AUTH_USER:
            return action.payload;
        default:
-           return false;
+           return state;
    }
 }

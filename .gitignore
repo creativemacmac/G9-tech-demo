@@ -3,3 +3,6 @@
 
 # Ignore Node Modules
 /node_modules/
+
+# ignore error files
+yarn-error.log

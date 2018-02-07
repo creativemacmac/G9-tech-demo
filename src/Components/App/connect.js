@@ -7,6 +7,7 @@ import App from './component';
 
 // pass state of login as prop to component
 const mapStateToProps = (state) => {
+
     return {
         loggedIn: state.loggedIn
     }

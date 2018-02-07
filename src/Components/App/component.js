@@ -51,6 +51,8 @@ class App extends Component<Props, State> {
     const {activeItem} = this.state;
     const { loggedIn } = this.props;
 
+   let renderLoginButton = typeof loggedIn  === 'boolean' ? loggedIn : false;
+
     return (
       <div className="App">
         <div>
@@ -65,7 +67,7 @@ class App extends Component<Props, State> {
             <Menu.Item as={Link} to='/algolia' name='Algolia' active={activeItem === 'Algolia'} onClick={this.handleItemClick} />
             <Menu.Item as={Link} to='/redux' name='Redux' active={activeItem === 'Redux'} onClick={this.handleItemClick} />
             <Menu.Item position='right'>
-              { !loggedIn ? (
+              { !renderLoginButton ? (
                   <Button
                     as={GoogleLogin}
                     color='blue'

@@ -25,9 +25,9 @@ class Demo1 extends React.Component<{}, State> {
                     onSubmit={event => {
                         event.preventDefault()
                         event.target.reset()
-                        this.setState({
-                            isBlocking: false
-                        })
+                        // this.setState({
+                        //     isBlocking: false
+                        // })
                     }}
                 >
                     <Prompt
@@ -46,9 +46,9 @@ class Demo1 extends React.Component<{}, State> {
                         size="medium"
                         placeholder="type something to block transitions"
                         onChange={event => {
-                            this.setState({
-                                isBlocking: event.target.value.length > 0
-                            })
+                            // this.setState({
+                            //     isBlocking: event.target.value.length > 0
+                            // })
                         }}
                     />
 
