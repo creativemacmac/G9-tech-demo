@@ -6,6 +6,8 @@ import { Header, Button } from 'semantic-ui-react';
 import Posts from './subComponents/posts';
 import PostNew from './subComponents/postNew';
 import PostContent from './subComponents/postContent';
+import MMD from '../MMD';
+import MediaDetail from '../mediaDetail';
 
 const ReduxDemo = ({match, loggedIn}) => {
 
@@ -25,16 +27,21 @@ const ReduxDemo = ({match, loggedIn}) => {
             <Header as='h2' content='Demo using Redux' dividing />
 
             <Button>
-                <Link to={`${match.path}/post`}> See Posts </Link>
+                <Link to={`${match.path}/post`}> See Blog Posts </Link>
             </Button>
             <Button>
                 <Link to={`${match.path}/post/new`}> Add a posts </Link>
+            </Button>
+            <Button>
+                <Link to={`${match.path}/mmd`}>See basic mmd example</Link>
             </Button>
 
             <Switch>
                 <Route path={`${match.path}/post/new`} component={PostNew} />
                 <Route path={`${match.path}/post/:id`} component={PostContent} />
                 <Route path={`${match.path}/post`} component={Posts} />
+                <Route path={`${match.path}/mmd/:id`} component={MediaDetail} />
+                <Route path={`${match.path}/mmd`} component={MMD} />
             </Switch>
 
         </div>

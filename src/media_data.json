@@ -1,0 +1,9 @@
+{
+    0: {
+        'media': `<a data-flickr-embed="true"  href="https://www.flickr.com/photos/fabricetoussaint/15292152348/" title="Photo"><img src="https://farm3.staticflickr.com/2946/15292152348_f8317a2904_b.jpg" width="1024" height="1024" alt="Photo"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>`,
+        'imgId': 0,
+        'size': '1,0939,009 MB',
+        'type': 'image',
+        'uploader': 'Fabrice Toussaint'
+    }
+}
