@@ -30,7 +30,9 @@ class ReactRouterDemo extends React.Component<{}, State> {
 
         return (
             <div>
-                <Header as='h2' content='Demo using React Router 4' dividing />
+                <Header as='h2' className='g9-header' dividing>
+                    <Header.Content>Demo using React Router 4</Header.Content>
+                </Header>
 
                 <Menu secondary vertical className='demo-sidebar'>
                     <Menu.Item as={Link} to='/reactRouter/demo1' name='Demo 1: Blocking page transitions' active={activeItem === 'Demo 1: Blocking page transitions'} onClick={this.handleItemClick} />

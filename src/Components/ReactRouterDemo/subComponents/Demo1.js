@@ -19,15 +19,17 @@ class Demo1 extends React.Component<{}, State> {
 
         return (
             <div>
-                <Header as='h2' content='Demo: Prevent users from changing routes while form is being filled out'/>
+                <Header as='h2' className='g9-header' >
+                    <Header.Content>Demo: Prevent users from changing routes while form is being filled out</Header.Content>
+                </Header>
 
                 <Form
                     onSubmit={event => {
                         event.preventDefault()
                         event.target.reset()
-                        // this.setState({
-                        //     isBlocking: false
-                        // })
+                        this.setState({
+                            isBlocking: false
+                        })
                     }}
                 >
                     <Prompt
@@ -46,9 +48,9 @@ class Demo1 extends React.Component<{}, State> {
                         size="medium"
                         placeholder="type something to block transitions"
                         onChange={event => {
-                            // this.setState({
-                            //     isBlocking: event.target.value.length > 0
-                            // })
+                            this.setState({
+                                isBlocking: event.target.value.length > 0
+                            })
                         }}
                     />
 

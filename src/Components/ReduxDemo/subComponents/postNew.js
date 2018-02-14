@@ -1,7 +1,8 @@
 // @flow
+/*eslint-disable*/
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
-import { Form, Button } from 'semantic-ui-react';
+import { Form, Button, Segment, Grid } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createPost } from '../../../Redux/actions';
@@ -29,28 +30,55 @@ class PostNew extends React.Component {
 
     render() {
         const { handleSubmit} = this.props;
+        const mediaTypes = [
+            {key: 'i', text: 'Image', value: 'image' },
+            {key: 'v', text: 'Video', value: 'video' },
+            {key: 'g', text: 'Gif', value: 'gif' },
+        ];
 
         return (
-            <Form onSubmit={handleSubmit(this.onSubmit)}>
-                <Field
-                    label='Title'
-                    name='title'
-                    component={this.renderField}
-                />
-                <Field
-                    label='Categories'
-                    name='categories'
-                    component={this.renderField}
-                />
-                <Field
-                    label='Post Content'
-                    name='content'
-                    component={this.renderField}
-                />
-                <Button type='submit' content='Submit' />
-                <Button as={Link} to='/redux/post' type='cancel' content='Cancel' />
+            <Grid centered padded>
+                <Grid.Column  width={6} >
+                    <Form onSubmit={handleSubmit(this.onSubmit)}>
+                        <Form.Input
+                            as={Field}
+                            label='Title'
+                            name='title'
+                            placeholder='Title'
+                            required
+                            component={this.renderField}
+                        />
+                        <Form.Input
+                            as={Field}
+                            label='Categories'
+                            name='categories'
+                            placeholder='Categories'
+                            required
+                            component={this.renderField}
+                        />
+                        <Form.TextArea
+                            as={Field}
+                            label='Post Content'
+                            name='content'
+                            placeholder='Content'
+                            required
+                            component={this.renderField}
+                        />
+                        <Form.Select
+                            label='Media type'
+                            options={mediaTypes}
+                            placeholder='Select media type'
+                            error
+                        />
+                        <Button.Group fluid>
+                            <Button type='Submit' content='Submit' positive />
+                            <Button.Or />
+                            <Button as={Link} to='/redux/post' type='cancel' content='Cancel' />
+                        </Button.Group>
 
-            </Form>
+                    </Form>
+                </Grid.Column>
+            </Grid>
         )
     }
 

@@ -14,7 +14,7 @@ const videoId = skater ? `https://www.youtube.com/embed/${skater.videoId}` : '';
 
   return (
     <div>
-      <Header as='h2' content='Greatest Skate video of all time with the best team (minus one or two)' />
+      <Header as='h2' className='g9-header'  content='Greatest Skate video of all time with the best team (minus one or two)' />
 
       {
         Demo2API.skaters.map((skater) => (

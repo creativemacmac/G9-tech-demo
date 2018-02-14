@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import dummyImg from '../../../images/florida-3.jpg';
 import { fetchPosts } from '../../../Redux/actions';
-import { List } from 'semantic-ui-react';
+import { List, Image, Grid } from 'semantic-ui-react';
 import _ from 'lodash';
 
 class Posts extends React.Component {
@@ -12,8 +13,11 @@ class Posts extends React.Component {
 
     renderPosts = () => {
         return _.map(this.props.posts, post => {
+            if (post.title === null) return;
             return (
                 <List.Item  key={post.id}>
+                    <Image avatar src={dummyImg} />
+                    <List.Header content='Mans not Hot posted...' />
                     <Link to={`/redux/post/${post.id}`} className='list-group-item'>
                         {post.title}
                     </Link>
@@ -23,13 +27,17 @@ class Posts extends React.Component {
     };
 
     render() {
-
+        console.log(this.props.posts);
         return (
             <div>
                 <h3> Posts </h3>
-                <List>
-                    {this.renderPosts()}
-                </List>
+                <Grid centered padded>
+                    <Grid.Column  textAlign='center' width={6}>
+                        <List divided relaxed>
+                            {this.renderPosts()}
+                        </List>
+                    </Grid.Column>
+                </Grid>
             </div>
         )
     }

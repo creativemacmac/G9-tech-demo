@@ -17,23 +17,20 @@ const ReduxDemo = ({match, loggedIn}) => {
     if(!renderLoginButton) {
         return (
             <div>
-                <Header as='h2' content='Please login above first' />
+                <Header as='h2' className='g9-header'  content='Please login above first' />
             </div>
         )
     }
 
     return (
         <div>
-            <Header as='h2' content='Demo using Redux' dividing />
+            <Header as='h2' className='g9-header'  content='Demo using Redux' dividing />
 
-            <Button>
-                <Link to={`${match.path}/post`}> See Blog Posts </Link>
-            </Button>
-            <Button>
-                <Link to={`${match.path}/post/new`}> Add a posts </Link>
-            </Button>
-            <Button>
-                <Link to={`${match.path}/mmd`}>See basic mmd example</Link>
+            <Button color='teal' as={Link} to={`${match.path}/post`}> See Blog Posts</Button>
+            <Button color='teal' as={Link} to={`${match.path}/post/new`}> Add a posts</Button>
+            <Button color='teal' as={Link} to={`${match.path}/mmd`} animated='fade'>
+                <Button.Content visible>See basic mmd example</Button.Content>
+                <Button.Content hidden>Wo0o0owwwWw</Button.Content>
             </Button>
 
             <Switch>
