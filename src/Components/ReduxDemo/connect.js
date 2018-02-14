@@ -6,7 +6,7 @@ import ReduxDemo from './component';
 
 const mapStateToProps = (state) => {
     return {
-        loggedIn:/*state.loggedIn */ true
+        loggedIn: state.loggedIn
     }
 }
 
